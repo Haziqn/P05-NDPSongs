@@ -30,26 +30,27 @@ public class SecondActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //TODO implement the Custom ListView
         setContentView(R.layout.second_activity);
 
         btnShow = (Button) findViewById(R.id.btnShow);
-
         lv = (ListView) findViewById(R.id.lv);
+
+        //retrieving the songs from db
         DBHelper db = new DBHelper(SecondActivity.this);
-        al = db.getAllNotes();
+        al = db.getAllSong();
 
         aa = new ArrayAdapter(this, R.layout.row, al);
         lv.setAdapter(aa);
         aa.notifyDataSetChanged();
         db.close();
 
+        //to show 5 star songs
         btnShow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 DBHelper dbh = new DBHelper(SecondActivity.this);
                 al.clear();
-                al.addAll(dbh.getAllNotesbyStars());
+                al.addAll(dbh.get5Songs());
                 dbh.close();
                 lv.setAdapter(aa);
                 aa.notifyDataSetChanged();
@@ -85,7 +86,7 @@ public class SecondActivity extends AppCompatActivity {
 
         if (resultCode == RESULT_OK && requestCode == 9) {
             DBHelper db = new DBHelper(SecondActivity.this);
-            al = db.getAllNotes();
+            al = db.getAllSong();
             aa = new ArrayAdapter(SecondActivity.this, R.layout.row, al);
             lv.setAdapter(aa);
         }
