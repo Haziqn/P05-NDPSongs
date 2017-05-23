@@ -22,7 +22,6 @@
         android:text="Enter song title here " />
 
     <TextView
-        android:id="@+id/Singers :"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Singers" />
