@@ -37,7 +37,7 @@ public class SecondActivity extends AppCompatActivity {
 
         lv = (ListView) findViewById(R.id.lv);
         DBHelper db = new DBHelper(SecondActivity.this);
-        al = db.getAllNotes();
+        al = db.getAllSong();
 
         aa = new ArrayAdapter(this, R.layout.row, al);
         lv.setAdapter(aa);
@@ -49,7 +49,7 @@ public class SecondActivity extends AppCompatActivity {
             public void onClick(View view) {
                 DBHelper dbh = new DBHelper(SecondActivity.this);
                 al.clear();
-                al.addAll(dbh.getAllNotesbyStars());
+                al.addAll(dbh.get5Songs());
                 dbh.close();
                 lv.setAdapter(aa);
                 aa.notifyDataSetChanged();
@@ -85,7 +85,7 @@ public class SecondActivity extends AppCompatActivity {
 
         if (resultCode == RESULT_OK && requestCode == 9) {
             DBHelper db = new DBHelper(SecondActivity.this);
-            al = db.getAllNotes();
+            al = db.getAllSong();
             aa = new ArrayAdapter(SecondActivity.this, R.layout.row, al);
             lv.setAdapter(aa);
         }

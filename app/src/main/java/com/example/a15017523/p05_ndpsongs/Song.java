@@ -11,13 +11,13 @@ public class Song implements Serializable {
     private String singers;
     private int stars;
     private String title;
-    private int yearReleased;
+    private int year;
 
-    public Song(int id, String title, String singers, int yearReleased, int stars) {
+    public Song(int id, String title, String singers, int year, int stars) {
         this.id = id;
         this.title = title;
         this.singers = singers;
-        this.yearReleased = yearReleased;
+        this.year = year;
         this.stars = stars;
     }
 
@@ -48,12 +48,12 @@ public class Song implements Serializable {
         return this;
     }
 
-    public int getYearReleased() {
-        return this.yearReleased;
+    public int getYear() {
+        return this.year;
     }
 
-    public Song setYearReleased(int yearReleased) {
-        this.yearReleased = yearReleased;
+    public Song setYear(int year) {
+        this.year = year;
         return this;
     }
 
