@@ -30,12 +30,12 @@ public class SecondActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //TODO implement the Custom ListView
         setContentView(R.layout.second_activity);
 
         btnShow = (Button) findViewById(R.id.btnShow);
-
         lv = (ListView) findViewById(R.id.lv);
+
+        //retrieving the songs from db
         DBHelper db = new DBHelper(SecondActivity.this);
         al = db.getAllSong();
 
@@ -44,6 +44,7 @@ public class SecondActivity extends AppCompatActivity {
         aa.notifyDataSetChanged();
         db.close();
 
+        //to show 5 star songs
         btnShow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
